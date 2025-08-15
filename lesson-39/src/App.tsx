@@ -4,6 +4,7 @@ import { Main } from "./components/Main";
 import { useState } from "react";
 import { SidebarMenu } from "./components/common/SidebarMenu";
 import { ThemeProvider } from "./components/contexts/ThemeContext";
+import { SearchProvider } from "./components/contexts/SearchContext";
 
 
 export const App = () => {
@@ -15,12 +16,12 @@ export const App = () => {
 
   return (
     <ThemeProvider>
+      <SearchProvider>
     <div className="flex max-w-[1200px] mx-auto flex-col min-h-screen w-full relative">
       
       <Header
         onMenuClick={toggleSidebar}
         isMenuOpen={isSidebarOpen}
-        onSearchClick={() => console.log('Search')}
         onUserClick={() => console.log('User')}
       />
       <SidebarMenu isOpen={isSidebarOpen}/> 
@@ -28,6 +29,7 @@ export const App = () => {
       <Main />
       <Footer/>
     </div>
+    </SearchProvider>
     </ThemeProvider>
   );
 };
